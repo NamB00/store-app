@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+body {
+	background-color: #e5e7eb;
+	transition: all 0.25s ease;
+	font-family: 'Poppins', sans-serif;
+	-webkit-transition: all 0.25s;
+}
+a.active {
+	/* color: rgba(0, 0, 0, var(--tw-text-opacity)); */
+	color: white;
+	font-weight: 700;
+}
+.wrapper-products-page {
+	height: 92vh;
+}
+/* // */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #0ab9dd;
+}
+
+/* // */
+
+.card-skeleton {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 0.5rem;
+
+	border: 1px solid grey;
+}
+
+/* // */
