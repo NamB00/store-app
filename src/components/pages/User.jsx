@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartControl } from '../../redux/actions';
-import Abc from '../Abc';
 
 const User = () => {
 	const [icludes, setIcludes] = useState(false);
@@ -71,7 +70,6 @@ const User = () => {
 										alt=''
 										className='rounded-full w-28 h-28'
 									/>
-									<Abc />
 								</div>
 								<div className='pl-10 lg:col-span-8'>
 									<h2>
