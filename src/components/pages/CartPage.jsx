@@ -206,9 +206,9 @@ const CartPage = () => {
 						<div className='col-span-12'>
 							<button
 								type='btn'
-								className={`flex items-center justify-center w-full gap-2 px-4 py-2 text-white duration-10 bg-[#00d4ff] rounded-md shadow-md ${
+								className={`flex items-center justify-center w-full gap-2 px-4 py-2 text-white duration-10 bg-[#0ab9dd] rounded-md shadow-md ${
 									count > 0 ? '' : 'cursor-not-allowed opacity-50'
-								}  text-md hover:bg-[#0ab9dd]`}
+								}  text-md hover:bg-[#12849b]`}
 								// disabled
 								onClick={handleCheckOut}
 							>
@@ -217,7 +217,7 @@ const CartPage = () => {
 						</div>
 						<div className='col-span-12'>
 							<Link
-								to='/products/1'
+								to='/'
 								className='flex items-center justify-center w-full gap-2 px-4 py-2 text-[#00d4ff] duration-100 border border-[#00d4ff] rounded-md shadow-md text-md hover:bg-[#0ab9dd47]'
 							>
 								Continue shopping
@@ -359,7 +359,7 @@ const CartPage = () => {
 													</div>
 													<div className='mt-4'>
 														<button
-															className='px-4 py-1 font-medium tracking-wider text-white bg-blue-500 rounded'
+															className='px-4 py-1 font-medium tracking-wider text-white bg-[#0ab9dd] rounded'
 															type='submit'
 														>
 															Submit

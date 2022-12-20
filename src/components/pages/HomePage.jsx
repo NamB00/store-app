@@ -41,10 +41,14 @@ const HomePage = () => {
 			<div className='container h-full mx-auto'>
 				<div className='grid h-full grid-cols-12 gap-5'>
 					{LoadingSK ? (
-						<div className='col-span-12 mx-auto translate-y-1/2'>
+						<div
+							className={`col-span-12 mx-auto  ${
+								LoadingSK ? ' flex h-[88vh] justify-center items-center' : ''
+							}`}
+						>
 							<RingLoader
 								color='#0ab9dd'
-								loading={LoadingSK}
+								// loading={LoadingSK}
 								size={150}
 								aria-label='PacmanLoader'
 								data-testid='PacmanLoader'
@@ -128,7 +132,7 @@ const HomePage = () => {
 											</span>
 											<button
 												type='button'
-												className='flex items-center px-4 py-3 text-sm font-medium text-white rounded-md bg-gradient-to-r from-[#0072ff] to-[#0ab9dd] transition-all hover:scale-110'
+												className='flex items-center px-4 py-3 text-sm font-medium text-white rounded-md bg-gradient-to-r from-[#0fafcf] to-[#0ab9dd] transition-all hover:scale-110'
 												onClick={() =>
 													addProduct({
 														...item,

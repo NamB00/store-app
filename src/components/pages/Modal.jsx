@@ -27,14 +27,14 @@ const Modal = () => {
 	return (
 		<div>
 			<div className='relative z-10'>
-				<div className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity'></div>
+				<div className='fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75'></div>
 
 				<div className='fixed inset-0 z-10 overflow-y-auto'>
-					<div className='flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0'>
-						<div className='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+					<div className='flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0'>
+						<div className='relative overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg'>
 							<div className='leading-loose'>
-								<form onSubmit={handleSubmit} className='max-w-xl m-4 p-10'>
-									<p className='text-gray-800 font-medium'>
+								<form onSubmit={handleSubmit} className='max-w-xl p-10 m-4'>
+									<p className='font-medium text-gray-800'>
 										Customer information
 									</p>
 									<div className=''>
@@ -61,7 +61,7 @@ const Modal = () => {
 											Email
 										</label>
 										<input
-											className='w-full px-5  py-2 text-gray-700 bg-gray-200 rounded'
+											className='w-full px-5 py-2 text-gray-700 bg-gray-200 rounded'
 											id='email'
 											name='email'
 											type='email'
@@ -71,7 +71,7 @@ const Modal = () => {
 									</div>
 									<div className='mt-2'>
 										<label
-											className=' block text-sm text-gray-600'
+											className='block text-sm text-gray-600 '
 											htmlFor='address'
 										>
 											Address
@@ -87,7 +87,7 @@ const Modal = () => {
 									</div>
 									<div className='mt-2'>
 										<label
-											className='hidden text-sm block text-gray-600'
+											className='hidden block text-sm text-gray-600'
 											htmlFor='city'
 										>
 											City
@@ -101,7 +101,7 @@ const Modal = () => {
 											placeholder='City'
 										/>
 									</div>
-									<div className='inline-block mt-2 w-1/2 pr-1'>
+									<div className='inline-block w-1/2 pr-1 mt-2'>
 										<label
 											className='hidden block text-sm text-gray-600'
 											htmlFor='country'
@@ -117,7 +117,7 @@ const Modal = () => {
 											placeholder='Country'
 										/>
 									</div>
-									<div className='inline-block mt-2 -mx-1 pl-1 w-1/2'>
+									<div className='inline-block w-1/2 pl-1 mt-2 -mx-1'>
 										<label
 											className='hidden block text-sm text-gray-600'
 											htmlFor='zip'
@@ -135,7 +135,7 @@ const Modal = () => {
 									</div>
 									<div className='mt-4'>
 										<button
-											className='px-4 py-1 text-white font-medium tracking-wider bg-blue-500 rounded'
+											className='px-4 py-1 text-white font-medium tracking-wider bg-[#0ab9dd] rounded'
 											type='submit'
 										>
 											Submit

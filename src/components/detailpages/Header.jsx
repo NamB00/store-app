@@ -53,23 +53,23 @@ const Header = ({ state }) => {
 							}  left-0 z-10 w-full top-14 `}
 						>
 							<div>
-								<div className='py-4 px-3  bg-[#26b3cf] rounded-b-md dark:bg-gray-800 flex flex-col'>
+								<div className='py-4 px-3 transition-all bg-[#26b3cf] rounded-b-md dark:bg-gray-800 flex flex-col'>
 									<NavLink
 										to='/'
-										className='relative inline-block text-lg font-normal text-white '
+										className='relative inline-block py-2 text-lg font-normal text-white '
 									>
 										Home
 									</NavLink>
 									<NavLink
 										to='/products/1'
-										className='relative inline-block text-lg font-normal text-white'
+										className='relative inline-block py-2 text-lg font-normal text-white'
 										// onClick={() => setShow(true)}
 									>
 										Product
 									</NavLink>
 									<NavLink
 										to='/reviews'
-										className='relative inline-block text-lg font-normal text-white'
+										className='relative inline-block py-2 text-lg font-normal text-white'
 										// onClick={() => setShow(true)}
 									>
 										Reviews

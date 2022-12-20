@@ -150,17 +150,17 @@ const User = () => {
 					<div className='flex items-center justify-center w-full p-5 text-center bg-white rounded-lg shadow-lg'>
 						<h1 className='font-medium'>PLEASE LOGIN TO YOUR ACCOUNT</h1>
 					</div>
-					<div className='flex items-center justify-center w-full p-5 text-center bg-white rounded-lg shadow-lg'>
+					<div className='flex items-center justify-center w-full p-5 mx-auto text-center bg-white rounded-lg shadow-lg'>
 						<Link
 							to='/sign-up'
-							className='mx-auto bg-red-400 text-white font-medium w-[200px] p-3 rounded-lg'
+							className='mx-auto bg-red-400 text-white font-medium w-[170px] p-3 rounded-lg'
 							onClick={handleSignUp}
 						>
 							Create account
 						</Link>
 						<Link
 							to='/sign-in'
-							className='mx-auto bg-[#0ab9dd] text-white w-[200px] font-medium p-3 rounded-lg'
+							className='mx-auto bg-[#0ab9dd] text-white w-[170px] font-medium p-3 rounded-lg'
 						>
 							Login
 						</Link>

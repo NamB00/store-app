@@ -20,6 +20,7 @@ const ProductsPage = () => {
 	const { isLoading, products, errorMessage } = useSelector(
 		(state) => state.products
 	);
+
 	const addProduct = (product) => {
 		if (!userInfo) {
 			navigate('/sign-in');
@@ -36,9 +37,7 @@ const ProductsPage = () => {
 
 	useEffect(() => {
 		setCount(1);
-		if (!products) {
-			setLoadingSK(true);
-		} else {
+		if (products) {
 			setLoadingSK(false);
 		}
 	}, [slug.id, products]);
@@ -54,10 +53,14 @@ const ProductsPage = () => {
 			<div className='container h-full mx-auto'>
 				<div className='grid h-full grid-cols-12 gap-5'>
 					{LoadingSK ? (
-						<div className='col-span-12 mx-auto translate-y-1/2'>
+						<div
+							className={`col-span-12 mx-auto  ${
+								LoadingSK ? ' flex h-[88vh] justify-center items-center' : ''
+							}`}
+						>
 							<RingLoader
 								color='#0ab9dd'
-								loading={LoadingSK}
+								// loading={LoadingSK}
 								size={150}
 								aria-label='PacmanLoader'
 								data-testid='PacmanLoader'
@@ -101,7 +104,7 @@ const ProductsPage = () => {
 												${products[slug.id - 1].price}
 											</p>
 											<button
-												className='flex items-center p-2 text-sm font-medium text-white rounded-md bg-gradient-to-r from-[#0072ff] to-[#0ab9dd] transition-all hover:scale-110'
+												className='flex items-center p-2 text-sm font-medium text-white rounded-md bg-gradient-to-r from-[#0fafcf] to-[#0ab9dd] transition-all hover:scale-110'
 												onClick={() =>
 													addProduct({
 														...products[slug.id - 1],
