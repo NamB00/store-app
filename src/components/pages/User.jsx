@@ -156,7 +156,7 @@ const User = () => {
 							className='mx-auto bg-red-400 text-white font-medium w-[170px] p-3 rounded-lg'
 							onClick={handleSignUp}
 						>
-							Create account
+							Create Account
 						</Link>
 						<Link
 							to='/sign-in'
