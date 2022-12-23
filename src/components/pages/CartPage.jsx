@@ -4,6 +4,8 @@ import { Navigate, useNavigate, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from '../../contexts/auth-context';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 import {
 	addCart,
 	cartCheckOut,
@@ -70,8 +72,6 @@ const CartPage = () => {
 		let abc = histories;
 		abc.push(state);
 		dispatch(cartCheckOut({ data, cart, abc }));
-		// toast.success('order successfully!!');
-		// navigate('/products/1');
 		setCheckout(false);
 		Swal.fire({
 			position: 'center',
@@ -254,118 +254,192 @@ const CartPage = () => {
 												</svg>
 											</div>
 											<div className='leading-loose'>
-												<form
-													onSubmit={handleSubmit}
-													className='max-w-xl p-10 m-4'
+												<Formik
+													initialValues={{
+														name: '',
+														email: '',
+														address: '',
+														city: '',
+														country: '',
+													}}
+													validationSchema={yup.object({
+														name: yup
+															.string()
+															.required('Please enter your Username'),
+														city: yup
+															.string()
+															.required('Please enter your city'),
+														address: yup
+															.string()
+															.required('Please enter your Address'),
+														country: yup
+															.string()
+															.required('Please enter your Country'),
+														zip: yup
+															.string()
+															.required('Please enter your Country'),
+													})}
 												>
-													<p className='font-medium text-gray-800'>
-														Customer information
-													</p>
-													<div className=''>
-														<label
-															className='block text-sm text-gray-00'
-															htmlFor='name'
+													{({
+														values,
+														errors,
+														touched,
+														handleChange,
+														handleBlur,
+														isSubmitting,
+													}) => (
+														<form
+															onSubmit={handleSubmit}
+															className='max-w-xl p-10 m-4'
 														>
-															Name
-														</label>
-														<input
-															className='w-full px-5 py-2 text-gray-700 bg-gray-200 rounded'
-															id='name'
-															name='name'
-															type='text'
-															// required
-															placeholder='Your Name'
-														/>
-													</div>
-													<div className='mt-2'>
-														<label
-															className='block text-sm text-gray-600'
-															htmlFor='email'
-														>
-															Email
-														</label>
-														<input
-															className='w-full px-5 py-2 text-gray-700 bg-gray-200 rounded'
-															id='email'
-															name='email'
-															type='email'
-															// required
-															placeholder='Your Email'
-														/>
-													</div>
-													<div className='mt-2'>
-														<label
-															className='block text-sm text-gray-600 '
-															htmlFor='address'
-														>
-															Address
-														</label>
-														<input
-															className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-															id='address'
-															name='address'
-															type='text'
-															// required
-															placeholder='Street'
-														/>
-													</div>
-													<div className='mt-2'>
-														<label
-															className='hidden block text-sm text-gray-600'
-															htmlFor='city'
-														>
-															City
-														</label>
-														<input
-															className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-															id='city'
-															name='city'
-															type='text'
-															// required
-															placeholder='City'
-														/>
-													</div>
-													<div className='inline-block w-1/2 pr-1 mt-2'>
-														<label
-															className='hidden block text-sm text-gray-600'
-															htmlFor='country'
-														>
-															Country
-														</label>
-														<input
-															className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-															id='country'
-															name='country'
-															type='text'
-															// required
-															placeholder='Country'
-														/>
-													</div>
-													<div className='inline-block w-1/2 pl-1 mt-2 -mx-1'>
-														<label
-															className='hidden block text-sm text-gray-600'
-															htmlFor='zip'
-														>
-															Zip
-														</label>
-														<input
-															className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
-															id='zip'
-															name='zip'
-															type='text'
-															// required
-															placeholder='zip'
-														/>
-													</div>
-													<div className='mt-4'>
-														<button
-															className='px-4 py-1 font-medium tracking-wider text-white bg-[#0ab9dd] rounded'
-															type='submit'
-														>
-															Submit
-														</button>
-													</div>
-												</form>
+															<p className='font-medium text-gray-800'>
+																Customer information
+															</p>
+															<div className=''>
+																<label
+																	className='block text-sm text-gray-00'
+																	htmlFor='name'
+																>
+																	Name
+																</label>
+																<input
+																	className='w-full px-5 py-2 text-gray-700 bg-gray-200 rounded'
+																	id='name'
+																	name='name'
+																	type='text'
+																	// required
+																	placeholder='Your Name'
+																	onChange={handleChange}
+																	onBlur={handleBlur}
+																/>
+																<p className='block font-light text-red-500 text-md'>
+																	{errors.name && touched.name && errors.name}
+																</p>
+															</div>
+															<div className='mt-2'>
+																<label
+																	className='block text-sm text-gray-600'
+																	htmlFor='email'
+																>
+																	Email
+																</label>
+																<input
+																	className='w-full px-5 py-2 text-gray-700 bg-gray-200 rounded'
+																	id='email'
+																	name='email'
+																	type='email'
+																	// required
+																	placeholder='Your Email'
+																	onChange={handleChange}
+																	onBlur={handleBlur}
+																/>
+															</div>
+															<div className='mt-2'>
+																<label
+																	className='block text-sm text-gray-600 '
+																	htmlFor='address'
+																>
+																	Address
+																</label>
+																<input
+																	className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
+																	id='address'
+																	name='address'
+																	type='text'
+																	required
+																	placeholder='Street'
+																	onChange={handleChange}
+																	onBlur={handleBlur}
+																/>
+																<p className='block font-light text-red-500 text-md'>
+																	{errors.address &&
+																		touched.address &&
+																		errors.address}
+																</p>
+															</div>
+															<div className='mt-2'>
+																<label
+																	className='hidden block text-sm text-gray-600'
+																	htmlFor='city'
+																>
+																	City
+																</label>
+																<input
+																	className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
+																	id='city'
+																	name='city'
+																	type='text'
+																	placeholder='City'
+																	onChange={handleChange}
+																	onBlur={handleBlur}
+																/>
+																<p className='block font-light text-red-500 text-md'>
+																	{errors.city && touched.city && errors.city}
+																</p>
+															</div>
+															<div className='flex'>
+																<div className='inline-block w-1/2 pr-1 mt-2'>
+																	<label
+																		className='hidden block text-sm text-gray-600'
+																		htmlFor='country'
+																	>
+																		Country
+																	</label>
+																	<input
+																		className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
+																		id='country'
+																		name='country'
+																		type='text'
+																		placeholder='Country'
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																	/>
+																	<p className='font-light text-red-500 text-md'>
+																		{errors.country &&
+																			touched.country &&
+																			errors.country}
+																	</p>
+																</div>
+																<div className='inline-block w-1/2 pl-1 mt-2 -mx-1'>
+																	<label
+																		className='hidden block text-sm text-gray-600'
+																		htmlFor='zip'
+																	>
+																		Zip
+																	</label>
+																	<input
+																		className='w-full px-2 py-2 text-gray-700 bg-gray-200 rounded'
+																		id='zip'
+																		name='zip'
+																		type='text'
+																		placeholder='zip'
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																	/>
+																	<p className='font-light text-red-500 text-md'>
+																		{errors.zip && touched.zip && errors.zip}
+																	</p>
+																</div>
+															</div>
+															<div className='mt-4'>
+																<button
+																	className={`px-4 py-1 font-medium tracking-wider text-white bg-[#0ab9dd] rounded ${
+																		Object.keys(errors).length !== 0
+																			? 'cursor-not-allowed opacity-50'
+																			: ''
+																	}`}
+																	type={`${
+																		Object.keys(errors).length !== 0
+																			? 'button'
+																			: 'submit'
+																	}`}
+																>
+																	Submit
+																</button>
+															</div>
+														</form>
+													)}
+												</Formik>
 											</div>
 										</div>
 									</div>
