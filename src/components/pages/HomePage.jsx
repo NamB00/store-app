@@ -24,7 +24,7 @@ const HomePage = () => {
 			navigate('/sign-in');
 		} else {
 			dispatch(addCart(product));
-			toast.success('order successfully!!');
+			toast.success('Product added to cart!!');
 		}
 	};
 
