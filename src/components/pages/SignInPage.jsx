@@ -27,7 +27,7 @@ const SignInPage = () => {
 		await signInWithEmailAndPassword(auth, data.email, data.password)
 			.then(() => {
 				toast.success('Login user successfully!!');
-				navigate('/carts');
+				navigate('/');
 				setSubmit(true);
 			})
 			.catch((error) => {
