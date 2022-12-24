@@ -43,23 +43,27 @@ const handleCart = (state = initialSate, action) => {
 	const product = action.payload;
 	switch (action.type) {
 		case 'ADD_ITEM':
-			const exist = state.find((x) => x.productId == product.productId);
+			const { property } = action.payload;
+			const exist = property.find((x) => x.productId == product.productId);
+			// const exist = state.find((x) => x.productId == product.productId);
 			if (exist) {
 				const { count, IdCollection } = action.payload;
-				const abc = state.map((x) =>
+				const abc = property.map((x) =>
 					x.productId === product.productId
 						? { ...x, qty: x.qty + count, userId: IdUser }
 						: x
 				);
 				handleUploadProduct(abc, IdCollection);
+				console.log('run true');
 				return abc;
 			} else {
-				const { count, IdCollection } = action.payload;
-				// const abc = [...property, { ...product, qty: count }];
+				const { count, IdCollection, property } = action.payload;
 				delete product.property;
 				product.date = new Date().toLocaleString('en-US');
-				const abc = [...state, { ...product, qty: count }];
+				const abc = [...property, { ...product, qty: count }];
+				//fix here
 				handleUploadProduct(abc, IdCollection);
+				console.log('run false');
 				return abc;
 			}
 		case 'DELI_ITEM':
