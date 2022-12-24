@@ -27,7 +27,7 @@ const ProductsPage = () => {
 		} else {
 			dispatch(addCart(product));
 			setCount(1);
-			toast.success('order successfully!!');
+			toast.success('Product added to cart!!');
 		}
 	};
 	const handleSetcount = () => {
